@@ -1,0 +1,13 @@
+.app {
+    height: 500px;
+    width: 800px;
+    background: #dfdfdf;
+    position: relative;
+    margin: auto;
+  }
+  
+  .box {
+    background: red;
+    position: absolute;
+    border-radius: 150px ;
+  }
