@@ -1,0 +1,10 @@
+#start-btn{
+    top:200px;
+    left:1000px;
+    bottom:800px;
+    font-size:80px;
+    position: absolute;
+}
+#flappyBird{
+    position: relative;
+}
