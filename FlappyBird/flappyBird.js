@@ -20,7 +20,7 @@ var pipeSouth=new Image();
 pipeSouth.src="img/pipeSouth.png";
 var restartimg=new Image();
 restartimg.src="img/restart.png";
-
+var birdState="running";
 
 
 var gap=350;
@@ -51,12 +51,14 @@ bird.onload=function()
 }
 
 
-
+var storescore=0;
 
 function draw(){
     
-    ctx.clearRect(0,0,cvs.height,cvs.width);
+    //ctx.clearRect(0,0,cvs.height,cvs.width);
     ctx.drawImage(bg,0,0);
+    if( birdState=="running"){
+
     for(var i=0;i<pipe.length;i++)
     {
 
@@ -78,17 +80,29 @@ function draw(){
             score++;
         }
         if(bX+bird.width>=pipe[i].x && bX <= pipe[i].x+pipeNorth.width &&(bY<= pipe[i].y+pipeNorth.height||bY+bird.height>=pipe[i].y+constant||bY+bird.height>=cvs.height-fg.height)){
+            storescore = score;
             score=0; 
-            location.reload();
+            
+            birdState="dead";
            }
         
     }
-    
-    
     bY+=gravity;
     ctx.fillStyle="#000";
     ctx.font="20px Verdana";
     ctx.fillText("Score:"+score,100,20);
+    
+}
+else{
+    ctx.fillText("Game over",100,20);
+    ctx.fillText("Score:"+storescore,100,80);
+
+    document.onclick=function()
+    {
+        location.reload();
+    }
+}
+
     
 
 
