@@ -15,7 +15,7 @@ bg.src='img/bg.png';
 var fg=new Image();
 fg.src="img/fg.png";
 var pipeNorth=new Image();
-pipeNorth.src="./img/pipeNorth.png";
+pipeNorth.src="img/pipeNorth.png";
 var pipeSouth=new Image();
 pipeSouth.src="img/pipeSouth.png";
 var restartimg=new Image();
@@ -23,7 +23,7 @@ restartimg.src="img/restart.png";
 
 
 
-var gap=115;
+var gap=350;
 var bX=10;
 var bY=150;
 var constant =pipeNorth.height+gap;
@@ -34,7 +34,7 @@ var status;
 
     pipe[0]={
         x:cvs.width,
-        y:0
+        y:-10
     }
 
 document.addEventListener("keydown",moveUp);
@@ -61,7 +61,10 @@ function draw(){
     {
 
         ctx.drawImage(pipeNorth,pipe[i].x,pipe[i].y);
+        console.log("constant>>",constant);
         ctx.drawImage(pipeSouth,pipe[i].x,pipe[i].y+constant);
+        console.log("pipe north>>",pipe[i].y+pipeNorth.height);
+        console.log("pipe south>>",pipe[i].y+constant);
         ctx.drawImage(fg,0,cvs.height-fg.height);
         ctx.drawImage(bird,bX,bY);
         pipe[i].x--;
